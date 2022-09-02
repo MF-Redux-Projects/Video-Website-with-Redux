@@ -1,12 +1,20 @@
 import {useDispatch, useSelector} from "react-redux";
 import {setPage} from "../../features/pagination/paginationSlice";
+import {useEffect} from "react";
+import {fetchTotalVideos} from "../../features/videos/videosSlice";
 
 export default function Pagination() {
     const dispatch = useDispatch();
-    const {videos} = useSelector(state => state.videos);
+    const {videoCount} = useSelector(state => state.videos);
     const {page, limit} = useSelector(state => state.pagination);
 
-    const totalPage = Math.ceil(videos.length / limit);
+    useEffect(() => {
+        dispatch(fetchTotalVideos());
+    }, [dispatch]);
+
+    console.log(videoCount)
+
+    const totalPage = Math.ceil(videoCount / limit);
     const pages = Array.from({length: totalPage}, (_, i) => i + 1);
 
     const handlePageChange = (page) => {
@@ -18,7 +26,7 @@ export default function Pagination() {
             <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 justify-end">
                 {
                     pages.map(page => (
-                        <div className="bg-blue-600 text-white px-4 py-1 rounded-full" onClick={() => handlePageChange(page)}>
+                        <div key={page} className="bg-blue-600 text-white px-4 py-1 rounded-full" onClick={() => handlePageChange(page)}>
                             {page}
                         </div>
                     ))
