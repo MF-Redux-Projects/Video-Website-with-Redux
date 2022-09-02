@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {authorFilter, resetTagsSearchFilter} from "../../features/filter/filterSlice";
+import {setPage} from "../../features/pagination/paginationSlice";
 
 export default function VideoGridItem({video = {}}) {
     const dispatch = useDispatch();
@@ -10,6 +11,7 @@ export default function VideoGridItem({video = {}}) {
     const handleAuthorFilter = (author) => {
         dispatch(authorFilter(author));
         dispatch(resetTagsSearchFilter())
+        dispatch(setPage(1))
     }
 
     return (
