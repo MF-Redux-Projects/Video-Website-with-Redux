@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {searchChanged} from "../../features/filter/filterSlice";
+import {searchFilter} from "../../features/filter/filterSlice";
 import {useMatch, useNavigate} from "react-router-dom";
 
 export default function Search() {
@@ -12,11 +12,11 @@ export default function Search() {
 
     useEffect(() => {
         setInput(search);
-    }, [search])
+    }, [search]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(searchChanged(input))
+        dispatch(searchFilter(input))
 
         //if user not in homepage, redirect to homepage
         if(!match){
