@@ -1,15 +1,15 @@
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {authorFilter, clearAllFilters} from "../../features/filter/filterSlice";
+import {authorFilter, resetTagsSearchFilter} from "../../features/filter/filterSlice";
 
 export default function VideoGridItem({video = {}}) {
     const dispatch = useDispatch();
-    const {id, title, description, thumbnail, author, avatar, date, views, duration, authorId} = video;
+    const {id, title, thumbnail, author, avatar, date, views, duration, authorId} = video;
     const videoUrl = `/videos/${id}`;
 
     const handleAuthorFilter = (author) => {
         dispatch(authorFilter(author));
-        dispatch(clearAllFilters())
+        dispatch(resetTagsSearchFilter())
     }
 
     return (
