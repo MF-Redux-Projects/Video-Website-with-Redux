@@ -22,12 +22,17 @@ const filterSlice = createSlice({
         authorFilter: (state, action) => {
             state.author = action.payload
         },
-        clearAllFilters: state => {
+        resetTagsSearchFilter: state => {
             state.tags = [];
             state.search = '';
+        },
+        resetAllFilters: state => {
+            state.tags = [];
+            state.search = '';
+            state.author = '';
         }
     }
 })
 
 export default filterSlice.reducer;
-export const {tagSelected, tagRemoved, searchFilter, authorFilter, clearAllFilters} = filterSlice.actions;
+export const {tagSelected, tagRemoved, searchFilter, authorFilter, resetTagsSearchFilter, resetAllFilters} = filterSlice.actions;
