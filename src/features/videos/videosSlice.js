@@ -15,9 +15,9 @@ export const fetchVideos = createAsyncThunk('videos/fetchVideos', async ({tags, 
     return videos;
 })
 
-export const fetchTotalVideos = createAsyncThunk('videos/fetchTotalVideos', async ()=>{
-    const videoCount = await totalVideosAPI();
-    return videoCount;
+export const fetchTotalVideos = createAsyncThunk('videos/fetchTotalVideos', async ({tags, search, author})=>{
+    const videos = await totalVideosAPI({tags, search, author});
+    return videos.length;
 })
 
 const videosSlice = createSlice({
