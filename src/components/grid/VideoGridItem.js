@@ -1,9 +1,16 @@
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {authorFilter, clearAllFilters} from "../../features/filter/filterSlice";
 
 export default function VideoGridItem({video = {}}) {
-    const {id, title, description, thumbnail, author, avatar, date, views, duration} = video;
+    const dispatch = useDispatch();
+    const {id, title, description, thumbnail, author, avatar, date, views, duration, authorId} = video;
     const videoUrl = `/videos/${id}`;
 
+    const handleAuthorFilter = (author) => {
+        dispatch(authorFilter(author));
+        dispatch(clearAllFilters())
+    }
 
     return (
         <div className="col-span-12 sm:col-span-6 md:col-span-3 duration-300 hover:scale-[1.03]">
@@ -17,7 +24,7 @@ export default function VideoGridItem({video = {}}) {
                 </div>
 
                 <div className="flex flex-row mt-2 gap-2">
-                    <Link to="#" className="shrink-0">
+                    <Link to='#' onClick={() => handleAuthorFilter(authorId)} className="shrink-0">
                         <img src={avatar} className="rounded-full h-6 w-6" alt={author}/>
                     </Link>
 
@@ -25,7 +32,8 @@ export default function VideoGridItem({video = {}}) {
                         <Link to={videoUrl}>
                             <p className="text-slate-900 text-sm font-semibold">{title}</p>
                         </Link>
-                        <Link className="text-gray-400 text-xs mt-2 hover:text-gray-600" to="#">{author}</Link>
+                        <Link className="text-gray-400 text-xs mt-2 hover:text-gray-600" to='#'
+                              onClick={() => handleAuthorFilter(authorId)}>{author}</Link>
                         <p className="text-gray-400 text-xs mt-1">
                             {views} views . {date}
                         </p>

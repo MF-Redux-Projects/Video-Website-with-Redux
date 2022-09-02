@@ -7,11 +7,11 @@ import Loading from "../ui/Loading";
 export default function VideGrid() {
     const dispatch = useDispatch();
     const {videos, isLoading, isError, error} = useSelector(state => state.videos);
-    const {tags, search} = useSelector(state => state.filter);
+    const {tags, search, author} = useSelector(state => state.filter);
 
     useEffect(() => {
-        dispatch(fetchVideos({tags, search}));
-    }, [dispatch, tags, search]);
+        dispatch(fetchVideos({tags, search, author}));
+    }, [dispatch, tags, search, author]);
 
     //decide what to render
     let content;
