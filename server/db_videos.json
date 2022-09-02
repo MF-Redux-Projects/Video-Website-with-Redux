@@ -104,6 +104,21 @@
             "tags": ["tailwind", "css", "ui"],
             "likes": 0,
             "unlikes": 0
+        },
+        {
+            "id": 8,
+            "title": "SASS Tutorial in English - Overview of SASS",
+            "description": "In this video, I have given a high level overview of popular CSS Pre-processor SASS which helps us managing our styles at scale. If you have a basic understanding of CSS & JavaScript, this 10 mins SASS Tutorial will help you getting started with SASS.",
+            "author": "Robert Smith",
+            "avatar": "https://i.ibb.co/bQYqYmQ/comment-3.jpg",
+            "date": "Nov 22, 2021",
+            "duration": "10:12",
+            "views": "2.1k",
+            "link": "https://www.youtube-nocookie.com/embed/4tV1Mfi4fMA",
+            "thumbnail": "https://i3.ytimg.com/vi/4tV1Mfi4fMA/maxresdefault.jpg",
+            "tags": ["sass", "css", "ui"],
+            "likes": 0,
+            "unlikes": 0
         }
     ],
     "tags": [

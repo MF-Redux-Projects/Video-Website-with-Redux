@@ -7,6 +7,7 @@ import Loading from "../ui/Loading";
 export default function Tags() {
     const dispatch = useDispatch();
     const {tags, isLoading, isError, error} = useSelector(state => state.tags);
+    const {tags: selectedTags, search} = useSelector(state => state.filter);
     useEffect(() => {
         dispatch(fetchTags());
     }, [dispatch])
@@ -30,8 +31,17 @@ export default function Tags() {
 
     return (
         <section>
-            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto">
-                {content}
+            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 border-b overflow-y-auto">
+                <div className="flex">
+                    <div className="w-4/5 flex gap-2">{content}</div>
+                    {
+                        selectedTags || search ? (
+                            <div className="w-1/5">
+                                <button className="bg-red-400 text-white px-4 py-1 rounded-full cursor-pointer float-right" onClick={handleClearAllFilters}>&#10005; Reset</button>
+                            </div>
+                        ) : ''
+                    }
+                </div>
             </div>
         </section>
     );
