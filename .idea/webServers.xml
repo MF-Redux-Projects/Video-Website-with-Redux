@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="05727390-1f71-4fdd-8f98-17346634826c" name="server" url="http://ftp-mehedifoysal.alwaysdata.net">
+        <fileTransfer host="ftp-mehedifoysal.alwaysdata.net" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

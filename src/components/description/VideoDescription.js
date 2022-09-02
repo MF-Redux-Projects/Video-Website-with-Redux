@@ -1,7 +1,7 @@
 import LikeUnlike from "./LikeUnlike";
 
 export default function VideoDescription({video}) {
-    const {title, description, date} = video;
+    const {id, title, description, date, likes, unlikes} = video;
     return (
         <div>
             <h1 className="text-lg font-semibold tracking-tight text-slate-800">{title}</h1>
