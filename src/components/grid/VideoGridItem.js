@@ -24,9 +24,9 @@ export default function VideoGridItem({video = {}}) {
                 </div>
 
                 <div className="flex flex-row mt-2 gap-2">
-                    <Link to='#' onClick={() => handleAuthorFilter(authorId)} className="shrink-0">
+                    <p onClick={() => handleAuthorFilter(authorId)} className="shrink-0 cursor-pointer">
                         <img src={avatar} className="rounded-full h-6 w-6" alt={author}/>
-                    </Link>
+                    </p>
 
                     <div className="flex flex-col">
                         <Link to={videoUrl}>

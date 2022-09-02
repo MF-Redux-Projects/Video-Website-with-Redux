@@ -1,8 +1,23 @@
-import {Link} from "react-router-dom";
+import {Link, useMatch, useNavigate} from "react-router-dom";
+import {authorFilter, resetTagsSearchFilter} from "../../features/filter/filterSlice";
+import {useDispatch} from "react-redux";
 
 export default function RelatedVideoListItem({video}) {
-    const {id, title, description, thumbnail, author, avatar, date, views, duration} = video;
+    const dispatch = useDispatch();
+    const match = useMatch('/');
+    const navigate = useNavigate();
+    const {id, title, thumbnail, author, avatar, date, views, duration, authorId} = video;
     const videoUrl = `/videos/${id}`;
+
+    const handleAuthorFilter = (author) => {
+        dispatch(authorFilter(author));
+        dispatch(resetTagsSearchFilter());
+
+        //if user not in homepage, redirect to homepage
+        if(!match){
+            navigate('/');
+        }
+    }
 
     return (
         <div className="w-full flex flex-row gap-2 mb-4">
@@ -19,9 +34,11 @@ export default function RelatedVideoListItem({video}) {
                         {title}
                     </p>
                 </Link>
-                <Link className="text-gray-400 text-xs mt-2 hover:text-gray-600" to={videoUrl}>
+                <p className="text-gray-400 text-xs mt-2 hover:text-gray-600 cursor-pointer"
+                      onClick={() => handleAuthorFilter(authorId)}
+                >
                     {author}
-                </Link>
+                </p>
                 <p className="text-gray-400 text-xs mt-1">
                     {views} views . {date}
                 </p>
