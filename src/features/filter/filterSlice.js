@@ -17,9 +17,13 @@ const filterSlice = createSlice({
         },
         searchChanged: (state, action) => {
             state.search = action.payload
+        },
+        clearAllFilters: state => {
+            state.tags = [];
+            state.search = '';
         }
     }
 })
 
 export default filterSlice.reducer;
-export const {tagSelected, tagRemoved, searchChanged} = filterSlice.actions;
+export const {tagSelected, tagRemoved, searchChanged, clearAllFilters} = filterSlice.actions;
